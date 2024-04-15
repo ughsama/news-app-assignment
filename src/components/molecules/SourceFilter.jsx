@@ -27,7 +27,7 @@ const Select = styled.select`
   }
 `;
 
-const SourceFilter = ({ onChange }) => {
+const SourceFilter = ({ onChange, value }) => {
   const handleSourceChange = (e) => {
     onChange(e.target.value);
   };
@@ -35,7 +35,7 @@ const SourceFilter = ({ onChange }) => {
   return (
     <Container>
       <Label>Select Source:</Label>
-      <Select onChange={handleSourceChange}>
+      <Select onChange={handleSourceChange} value={value}>
         <option value="">All Sources</option>
         <option value="NY Times">New York Times</option>
         <option value="Guardian">The Guardian</option>

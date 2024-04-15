@@ -27,16 +27,18 @@ const DateInput = styled.input`
   }
 `;
 
-const DateRangeFilter = ({ onChange }) => {
+const DateRangeFilter = ({ value, onChange }) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
+    onChange({ startDate: e.target.value });
   };
 
   const handleEndDateChange = (e) => {
     setEndDate(e.target.value);
+    onChange({ endDate: e.target.value });
   };
 
   return (
@@ -44,11 +46,15 @@ const DateRangeFilter = ({ onChange }) => {
       <Label>Start Date:</Label>
       <DateInput
         type="date"
-        value={startDate}
+        value={value.startDate}
         onChange={handleStartDateChange}
       />
       <Label>End Date:</Label>
-      <DateInput type="date" value={endDate} onChange={handleEndDateChange} />
+      <DateInput
+        type="date"
+        value={value.endDate}
+        onChange={handleEndDateChange}
+      />
     </Container>
   );
 };

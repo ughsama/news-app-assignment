@@ -1,6 +1,6 @@
 // src/components/pages/NewsPage.jsx
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import NewsFeed from "../components/templates/NewsFeed";
 import SearchBar from "../components/molecules/SearchBar";
@@ -76,13 +76,12 @@ const NewsPage = () => {
     setSearchQuery(query);
   };
 
-  const handleApplyFilters = () => {
-    // Add logic to apply filters
-  };
-
-  const handleResetFilters = () => {
-    // Add logic to reset filters
-  };
+  const computeCategories = useCallback(() => {
+    const uniqueCategoriesSet = new Set();
+    articles.map((article) => uniqueCategoriesSet.add(article.category));
+    const uniqueCategories = Array.from(uniqueCategoriesSet);
+    return uniqueCategories;
+  }, [articles]);
 
   return (
     <div>
@@ -93,6 +92,7 @@ const NewsPage = () => {
         articles={articles}
         setFilteredData={setFilteredData}
         appliedFilters={appliedFilters}
+        categories={computeCategories()}
       />
       {loading ? <p>Loading...</p> : <NewsFeed articles={filteredData} />}
     </div>

@@ -36,6 +36,8 @@ const useNewsAPI = () => {
           imageUrl: article.urlToImage,
           linkToArticle: article.url,
           source: "News API",
+          category: "General",
+          publishedAt: article.publishedAt,
         })),
         ...data2?.response?.results?.map((article) => ({
           ...article,
@@ -43,6 +45,8 @@ const useNewsAPI = () => {
           imageUrl: article.urlToImage,
           linkToArticle: article.webUrl,
           source: "Guardian",
+          category: article.pillarName,
+          publishedAt: article.webPublicationDate,
         })),
         ...data3?.results?.map((article) => ({
           ...article,
@@ -50,6 +54,8 @@ const useNewsAPI = () => {
           imageUrl: article.multimedia[0]?.url,
           linkToArticle: article.url,
           source: "NY Times",
+          category: article.section,
+          publishedAt: article.published_date,
         })),
       ];
 

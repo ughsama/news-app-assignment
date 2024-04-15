@@ -29,7 +29,7 @@ const Select = styled.select`
 
 const Option = styled.option``;
 
-const CategoryFilter = ({ categories, onChange }) => {
+const CategoryFilter = ({ categories, onChange, value }) => {
   const handleCategoryChange = (e) => {
     onChange(e.target.value);
   };
@@ -37,9 +37,9 @@ const CategoryFilter = ({ categories, onChange }) => {
   return (
     <Container>
       <Label>Select Category:</Label>
-      <Select onChange={handleCategoryChange}>
+      <Select onChange={handleCategoryChange} value={value}>
         <Option value="">All Categories</Option>
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <Option key={category} value={category}>
             {category}
           </Option>

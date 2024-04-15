@@ -6,6 +6,8 @@ import CategoryFilter from "../molecules/CategoryFilter";
 import Button from "../atoms/Button";
 
 const FilterContainerWrapper = styled.div`
+  position: sticky;
+  margin-bottom: auto;
   display: flex;
   width: auto;
   justify-content: space-between;
@@ -21,7 +23,6 @@ const FilterContainerWrapper = styled.div`
 
 const ButtonsContainer = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
   gap: 20px;
 `;
@@ -31,6 +32,7 @@ const Filters = ({
   articles,
   setFilteredData,
   appliedFilters,
+  categories,
 }) => {
   const [localFilters, setLocalFilters] = useState(appliedFilters);
 
@@ -57,7 +59,7 @@ const Filters = ({
 
     if (filters.category) {
       filteredNews = filteredNews.filter((article) =>
-        article.categories.includes(filters.category)
+        article.category.includes(filters.category)
       );
     }
 
@@ -81,11 +83,16 @@ const Filters = ({
   return (
     <FilterContainerWrapper>
       <DateRangeFilter
+        value={{
+          startDate: localFilters.startDate,
+          endDate: localFilters.endDate,
+        }}
         onChange={(dates) =>
           setLocalFilters((prevFilters) => ({ ...prevFilters, ...dates }))
         }
       />
       <SourceFilter
+        value={localFilters.source}
         onChange={(source) =>
           setLocalFilters((prevFilters) => ({
             ...prevFilters,
@@ -94,7 +101,8 @@ const Filters = ({
         }
       />
       <CategoryFilter
-        categories={["Technology", "Science", "Health", "Business"]} // Example categories
+        value={localFilters.category}
+        categories={categories}
         onChange={(category) =>
           setLocalFilters((prevFilters) => ({
             ...prevFilters,
@@ -103,10 +111,13 @@ const Filters = ({
         }
       />
       <ButtonsContainer>
-        <Button style={{ marginLeft: "auto" }} onClick={handleApplyFilters}>
+        {/* seems unnecessary to have an apply button */}
+        {/* <Button style={{ marginLeft: "auto" }} onClick={handleApplyFilters}>
           Apply
+        </Button> */}
+        <Button style={{ marginLeft: "auto" }} onClick={handleResetFilters}>
+          Reset
         </Button>
-        <Button onClick={handleResetFilters}>Reset</Button>
       </ButtonsContainer>
     </FilterContainerWrapper>
   );

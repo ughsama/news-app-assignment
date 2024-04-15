@@ -4,6 +4,8 @@ import NewsCard from "../organisms/NewsCard";
 
 const Container = styled.div`
   padding: 20px;
+  height: 800px;
+  overflow: scroll;
 `;
 
 const Title = styled.h1`
