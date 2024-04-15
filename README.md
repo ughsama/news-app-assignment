@@ -5,10 +5,7 @@ This is a frontend application built with React for displaying news articles. It
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
 - [Containerization with Docker](#containerization-with-docker)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
