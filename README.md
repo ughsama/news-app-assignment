@@ -1,8 +1,40 @@
-# React + Vite
+# Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a frontend application built with React for displaying news articles. It allows users to search for articles by keyword and filter the results by date, category, and source.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Usage](#usage)
+- [Containerization with Docker](#containerization-with-docker)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+To install the dependencies, run the following command:
+
+```bash
+npm install
+npm start
+```
+
+This will start the application in development mode and open it in your default web browser at http://localhost:5173
+
+## Containerization with Docker
+
+To containerize the frontend application using Docker, follow these steps:
+
+Ensure that Docker is installed on your system.
+
+Open a terminal and navigate to the root directory of the project.
+
+Build the Docker image using the following command:
+
+```bash
+docker run -p 3000:3000 frontend-app
+
+or
+
+docker build -t <image_name> .
+```
